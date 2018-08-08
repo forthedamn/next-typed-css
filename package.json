@@ -1,0 +1,19 @@
+{
+  "name": "next-typed-css",
+  "version": "0.2.1",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "https://github.com/forthedamn/next-typed-css",
+  "dependencies": {
+    "css-loader": "0.28.9",
+    "extract-text-webpack-plugin": "3.0.2",
+    "extracted-loader": "1.0.4",
+    "find-up": "2.1.0",
+    "ignore-loader": "0.1.2",
+    "postcss-loader": "2.0.10",
+    "typings-for-css-modules-loader": "^1.7.0"
+  },
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  }
+}
