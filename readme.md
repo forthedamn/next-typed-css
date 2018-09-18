@@ -4,7 +4,7 @@ Import `.css` files in your Next.js project with TypeScript typings
 
 Fork from @zeit/next-css but typing with Typescript.
 
-https://s0.meituan.net/bs/tempfs/file/zhongguoxin/cap.gif
+![https://s0.meituan.net/bs/tempfs/file/zhongguoxin/cap.gif](https://s0.meituan.net/bs/tempfs/file/zhongguoxin/cap.gif)
 
 ## Installation
 
