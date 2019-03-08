@@ -1,5 +1,9 @@
 # Next.js + CSS + Typescript
 
+### next-typed-css@latest Support next.js 7 & 8
+
+> next.js 6 plz use next-typed-css@0.2.1 *
+
 Import `.css` files in your Next.js project with TypeScript typings
 
 Fork from @zeit/next-css but typing with Typescript.
