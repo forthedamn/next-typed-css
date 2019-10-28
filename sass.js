@@ -10,30 +10,40 @@ module.exports = (nextConfig = {}) => {
       }
 
       const { dev, isServer } = options
-      const { cssModules, cssLoaderOptions, postcssLoaderOptions, tsCssModules } = nextConfig
+      const {
+        cssModules,
+        cssLoaderOptions,
+        postcssLoaderOptions,
+        sassLoaderOptions = {},
+        tsCssModules,
+      } = nextConfig
 
-      options.defaultLoaders.css = cssLoaderConfig(config, {
-        extensions: ['css'],
+      options.defaultLoaders.sass = cssLoaderConfig(config, {
+        extensions: ['scss', 'sass'],
         cssModules,
         cssLoaderOptions,
         postcssLoaderOptions,
         dev,
         isServer,
-        tsCssModules
+        tsCssModules,
+        loaders: [
+          {
+            loader: 'sass-loader',
+            options: sassLoaderOptions
+          }
+        ]
       })
 
-      config.module.rules.push({
-        test: /\.css$/,
-        issuer(issuer) {
-          if (issuer.match(/pages[\\/]_document\.js$/)) {
-            throw new Error(
-              'You can not import CSS files in pages/_document.js, use pages/_app.js instead.'
-            )
-          }
-          return true
+      config.module.rules.push(
+        {
+          test: /\.scss$/,
+          use: options.defaultLoaders.sass
         },
-        use: options.defaultLoaders.css
-      })
+        {
+          test: /\.sass$/,
+          use: options.defaultLoaders.sass
+        }
+      )
 
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)
