@@ -16,6 +16,7 @@ module.exports = (nextConfig = {}) => {
         postcssLoaderOptions,
         sassLoaderOptions = {},
         tsCssModules,
+        ignoreDts
       } = nextConfig
 
       options.defaultLoaders.sass = cssLoaderConfig(config, {
@@ -44,6 +45,12 @@ module.exports = (nextConfig = {}) => {
           use: options.defaultLoaders.sass
         }
       )
+
+      if (ignoreDts) {
+        config.plugins.push(
+          new options.webpack.IgnorePlugin(/s?[ac]ss(.module)?.d.ts$/)
+        )
+      }
 
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)

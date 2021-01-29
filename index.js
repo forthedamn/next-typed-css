@@ -10,7 +10,7 @@ module.exports = (nextConfig = {}) => {
       }
 
       const { dev, isServer } = options
-      const { cssModules, cssLoaderOptions, postcssLoaderOptions, tsCssModules } = nextConfig
+      const { cssModules, cssLoaderOptions, postcssLoaderOptions, tsCssModules, ignoreDts } = nextConfig
 
       options.defaultLoaders.css = cssLoaderConfig(config, {
         extensions: ['css'],
@@ -34,6 +34,12 @@ module.exports = (nextConfig = {}) => {
         },
         use: options.defaultLoaders.css
       })
+
+      if (ignoreDts) {
+        config.plugins.push(
+          new options.webpack.IgnorePlugin(/s?[ac]ss(.module)?.d.ts$/)
+        )
+      }
 
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)
