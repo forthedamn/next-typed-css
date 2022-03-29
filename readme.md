@@ -4,9 +4,9 @@
 
 > next.js 6 plz use next-typed-css@0.2.1 *
 
-Import `.css(.scss)` files in your Next.js project with TypeScript typings
+Import `.css(.css)` files in your Next.js project with TypeScript typings
 
-Fork from @zeit/next-css and @zeit/next-sass but typing with Typescript.
+Fork from next-typed-css and change node-sass to sass.
 
 ![https://s0.meituan.net/bs/tempfs/file/zhongguoxin/cap1.gif](https://s0.meituan.net/bs/tempfs/file/zhongguoxin/cap1.gif)
 
@@ -38,10 +38,11 @@ Typing css based on [typings-for-css-modules-loader](https://github.com/Jimdo/ty
 const withCSS = require('next-typed-css')
 module.exports = withCSS({
   // no need to set 'cssModule: true' again
-  tsCssModules: true
+  tCssModules: true
+  ignoreDts: true,
   cssLoaderOptions: {
     // typings-for-css-modules-loader config here
-    namedExport: true
+    namedExport: true,
   }
 })
 ```
@@ -60,7 +61,8 @@ Most config same as [@zeit/next-sass](https://github.com/zeit/next-plugins/tree/
 const withSass = require('next-typed-css/sass')
 module.exports = withSass({
   // no need to set 'cssModule: true' again
-  tsCssModules: true
+  tCssModules: true,
+   ignoreDts: true,
   cssLoaderOptions: {
     // typings-for-css-modules-loader config here
     namedExport: true
