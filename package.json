@@ -16,7 +16,7 @@
     "typings-for-css-modules-loader": "^1.7.0"
   },
   "devDependencies": {
-    "webpack": "^4.29.5"
+    "webpack": "^5.94.0"
   },
   "resolutions": {
     "lodash": "^4.17.13",
